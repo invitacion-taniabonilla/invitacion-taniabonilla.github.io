@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Privacidad: fotos de menores en sitio publico -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Nuestro bautizo</title>
+  <meta name="description" content="Invitacion al bautizo. Acompananos en este dia especial.">
+
+  <!-- Open Graph para vista previa en WhatsApp. URL absoluta de GitHub Pages. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ethan-taipe.github.io/INVITACION_BAUTIZO/">
+  <meta property="og:title" content="Nuestro bautizo">
+  <meta property="og:description" content="Acompananos en este dia especial.">
+  <meta property="og:image" content="https://ethan-taipe.github.io/INVITACION_BAUTIZO/assets/img/og.jpg">
+
+  <!-- Fuentes: Fraunces (titulos) y Figtree (datos) con respaldo en CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Figtree:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <!-- Collage de fondo: se rellena desde config.js -->
+  <div class="collage" id="collage" aria-hidden="true"></div>
+  <div class="collage-velo" aria-hidden="true"></div>
+
+  <!-- 1. Sobre inicial -->
+  <div class="sobre-pantalla" id="sobrePantalla">
+    <div class="sobre" id="sobre">
+      <div class="sobre-cuerpo">
+        <div class="sobre-solapa" id="sobreSolapa"></div>
+        <button class="sello" id="selloBtn" type="button" aria-label="Toca el sello para abrir la invitacion">
+          <svg viewBox="0 0 100 100" width="88" height="88" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="var(--oliva)"></circle>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"></circle>
+            <path d="M22 60 q10 -14 20 -2 q6 8 -2 14 q-14 4 -18 -12z" fill="var(--eucalipto)" fill-opacity="0.9"></path>
+            <text x="50" y="52" text-anchor="middle" dominant-baseline="middle"
+                  font-family="Fraunces, Georgia, serif" font-style="italic"
+                  font-size="30" fill="#F1E8DA" id="selloIniciales">MV</text>
+          </svg>
+        </button>
+      </div>
+      <p class="sobre-texto">Toca el sello para abrir la invitacion</p>
+      <a href="#portada" class="saltar" id="saltarLink">Saltar</a>
+    </div>
+  </div>
+
+  <!-- Contenido de la invitacion -->
+  <main class="invitacion" id="invitacion">
+
+    <!-- 2. Portada -->
+    <section class="seccion portada" id="portada" aria-labelledby="portadaTitulo">
+      <div class="panel">
+        <svg class="paloma" viewBox="0 0 120 80" width="72" height="48" aria-hidden="true">
+          <path d="M10 50 q20 -30 46 -20 q8 -18 26 -14 q-8 8 -6 16 q18 2 26 16 q-22 -6 -34 4 q-18 16 -44 8 q6 -10 -14 -6z"
+                fill="none" stroke="var(--oliva)" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="titulo" id="portadaTitulo" data-texto="portada">Bienvenidos a nuestro bautizo</h1>
+        <p class="nombres"><span data-nino></span> <span class="amper">&amp;</span> <span data-nina></span></p>
+      </div>
+    </section>
+
+    <!-- separador -->
+    <div class="separador" aria-hidden="true"></div>
+
+    <!-- 3. Protagonistas -->
+    <section class="seccion protagonistas" aria-labelledby="protagonistasTitulo">
+      <div class="panel">
+        <h2 class="titulo-seccion" id="protagonistasTitulo">Los protagonistas</h2>
+        <div class="protagonistas-grid">
+          <figure class="protagonista">
+            <div class="marco-arco"><img id="fotoNino" alt="" width="900" height="1200"></div>
+            <figcaption class="nombre-nino" data-nino></figcaption>
+          </figure>
+          <span class="amper amper-centro">&amp;</span>
+          <figure class="protagonista">
+            <div class="marco-arco"><img id="fotoNina" alt="" width="900" height="1200"></div>
+            <figcaption class="nombre-nina" data-nina></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="separador" aria-hidden="true"></div>
+
+    <!-- 4. Fecha y hora -->
+    <section class="seccion fecha" aria-labelledby="fechaTitulo">
+      <div class="panel">
+        <h2 class="titulo-seccion" id="fechaTitulo">Fecha y hora</h2>
+        <p class="fecha-larga" id="fechaLarga"></p>
+        <p class="hora" id="horaTexto"></p>
+        <div class="cuenta" id="cuenta" role="timer" aria-live="polite">
+          <div class="cuenta-item"><span id="cDias">0</span><small>dias</small></div>
+          <div class="cuenta-item"><span id="cHoras">0</span><small>horas</small></div>
+          <div class="cuenta-item"><span id="cMin">0</span><small>min</small></div>
+        </div>
+        <p class="cuenta-fin" id="cuentaFin" hidden>Gracias por acompanarnos en este dia tan especial.</p>
+      </div>
+    </section>
+
+    <div class="separador" aria-hidden="true"></div>
+
+    <!-- 5. Lugar(es): se generan desde config.js -->
+    <section class="seccion lugares" aria-labelledby="lugaresTitulo">
+      <div class="panel">
+        <h2 class="titulo-seccion" id="lugaresTitulo">Lugar</h2>
+        <div id="lugaresContenedor"></div>
+      </div>
+    </section>
+
+    <div class="separador" aria-hidden="true"></div>
+
+    <!-- 6. Padrinos -->
+    <section class="seccion padrinos" aria-labelledby="padrinosTitulo">
+      <div class="panel">
+        <h2 class="titulo-seccion" id="padrinosTitulo">Padrinos</h2>
+        <div class="padrinos-grid">
+          <div class="padrino-col">
+            <p class="padrino-de" data-nino></p>
+            <p class="padrino-nombres" id="padrinosNino"></p>
+          </div>
+          <div class="padrino-col">
+            <p class="padrino-de" data-nina></p>
+            <p class="padrino-nombres" id="padrinosNina"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="separador" aria-hidden="true"></div>
+
+    <!-- 7. Confirmar asistencia -->
+    <section class="seccion confirmar" aria-labelledby="confirmarTitulo">
+      <div class="panel">
+        <h2 class="titulo-seccion" id="confirmarTitulo">Confirmar asistencia</h2>
+        <p class="confirmar-texto" id="confirmarTexto"></p>
+        <div class="botones">
+          <a class="boton boton-principal" id="btnWhatsapp" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+        </div>
+        <div class="botones">
+          <a class="boton" id="btnCalendar" target="_blank" rel="noopener">Google Calendar</a>
+          <a class="boton" id="btnIcs" download="bautizo.ics">Descargar .ics</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="separador" aria-hidden="true"></div>
+
+    <!-- 8. Cierre -->
+    <section class="seccion cierre" aria-labelledby="cierreTitulo">
+      <div class="panel">
+        <svg class="ramita-cierre" viewBox="0 0 120 40" width="120" height="40" aria-hidden="true">
+          <path d="M10 20 H110" stroke="var(--eucalipto)" stroke-width="2"/>
+          <g fill="var(--eucalipto)" fill-opacity="0.85">
+            <ellipse cx="35" cy="14" rx="8" ry="4" transform="rotate(-25 35 14)"/>
+            <ellipse cx="55" cy="26" rx="8" ry="4" transform="rotate(25 55 26)"/>
+            <ellipse cx="75" cy="14" rx="8" ry="4" transform="rotate(-25 75 14)"/>
+            <ellipse cx="95" cy="26" rx="8" ry="4" transform="rotate(25 95 26)"/>
+          </g>
+        </svg>
+        <h2 class="titulo-seccion" id="cierreTitulo">Los esperamos</h2>
+        <p class="firma" id="firma"></p>
+      </div>
+    </section>
+
+    <!-- Control de musica (aparece solo si hay archivo configurado) -->
+    <button class="musica-btn" id="musicaBtn" type="button" hidden aria-pressed="false" aria-label="Silenciar musica">
+      <span aria-hidden="true">Musica</span>
+    </button>
+    <audio id="audioFondo" loop preload="none"></audio>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

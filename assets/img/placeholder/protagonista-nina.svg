@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-label="Foto de la nina">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7DDE4"/>
+      <stop offset="1" stop-color="#F1E8DA"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#g)"/>
+  <g fill="none" stroke="#6B7445" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round">
+    <path d="M450.0 336.00000000000006 q -60 -70 -120 -10 q -50 55 120 130 q 170 -75 120 -130 q -60 -60 -120 10 z"/>
+  </g>
+  <text x="50%" y="864.0" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#3A3F2E" fill-opacity="0.55">Foto de la nina</text>
+</svg>

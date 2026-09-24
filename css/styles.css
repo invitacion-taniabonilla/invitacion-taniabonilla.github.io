@@ -1,0 +1,324 @@
+/* ============================================================
+   Invitacion de bautizo - estilos
+   Paleta y diseno segun CLAUDE.md (sobre + cielo + botanico)
+   ============================================================ */
+
+:root {
+  --cielo-celeste: #D6E8F4;
+  --cielo-rosa: #F7DDE4;
+  --lino: #F1E8DA;
+  --oliva: #6B7445;
+  --eucalipto: #9FAE8C;
+  --tinta: #3A3F2E;
+
+  --fuente-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+  --fuente-datos: "Figtree", system-ui, sans-serif;
+
+  --panel-bg: rgba(241, 232, 218, 0.85);
+  --radio: 18px;
+  --sombra: 0 10px 30px rgba(58, 63, 46, 0.15);
+  --gutter: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente-datos);
+  color: var(--tinta);
+  background: linear-gradient(180deg, var(--cielo-celeste) 0%, var(--cielo-rosa) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* ---------- Collage de fondo ---------- */
+.collage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding: 14px;
+  pointer-events: none;
+}
+@media (min-width: 720px) {
+  .collage { grid-template-columns: repeat(4, 1fr); }
+}
+.collage-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  will-change: transform;
+}
+.polaroid {
+  background: #fff;
+  padding: 8px 8px 24px;
+  border-radius: 4px;
+  box-shadow: 0 8px 18px rgba(58, 63, 46, 0.18);
+}
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+/* Velo para asegurar legibilidad del contenido sobre el collage */
+.collage-velo {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(214, 232, 244, 0.55), rgba(247, 221, 228, 0.55));
+  pointer-events: none;
+}
+
+/* ---------- Sobre inicial ---------- */
+.sobre-pantalla {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--cielo-celeste), var(--cielo-rosa));
+  transition: opacity 0.6s ease;
+}
+.sobre-pantalla.abierto { opacity: 0; pointer-events: none; }
+
+.sobre { text-align: center; }
+.sobre-cuerpo {
+  position: relative;
+  width: min(78vw, 320px);
+  height: min(52vw, 210px);
+  margin: 0 auto;
+  background: var(--lino);
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+}
+.sobre-solapa {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: #e7dcc7;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.7s ease;
+  border-radius: 10px 10px 0 0;
+}
+.sobre.abriendo .sobre-solapa { transform: rotateX(180deg); }
+
+.sello {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 2;
+  border-radius: 50%;
+}
+.sello:focus-visible { outline: 3px solid var(--oliva); outline-offset: 4px; }
+.sobre.abriendo .sello { transform: translate(-50%, -140%) scale(0.9); opacity: 0; }
+
+.sobre-texto {
+  margin-top: 22px;
+  font-family: var(--fuente-titulo);
+  font-size: 1.05rem;
+  color: var(--tinta);
+}
+.saltar {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--tinta);
+  opacity: 0.6;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+/* ---------- Invitacion / paneles ---------- */
+.invitacion {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px var(--gutter) 60px;
+}
+.invitacion.oculto { display: none; }
+
+.seccion { margin: 0 0 8px; }
+.panel {
+  background: var(--panel-bg);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 28px 22px;
+  text-align: center;
+}
+
+/* ---------- Tipografia ---------- */
+.titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 6vw, 2.6rem);
+  color: var(--oliva);
+  margin: 10px 0 14px;
+  line-height: 1.15;
+}
+.titulo-seccion {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--oliva);
+  margin: 0 0 16px;
+}
+.nombres {
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: var(--tinta);
+  margin: 0;
+}
+.amper { color: var(--eucalipto); font-style: normal; }
+
+.paloma { display: block; margin: 0 auto 4px; }
+
+/* ---------- Protagonistas ---------- */
+.protagonistas-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.protagonista { margin: 0; }
+.marco-arco {
+  border-radius: 50% 50% 8px 8px / 40% 40% 8px 8px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  background: var(--lino);
+  aspect-ratio: 3 / 4;
+}
+.marco-arco img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.protagonista figcaption {
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-size: 1.15rem;
+  margin-top: 10px;
+  color: var(--tinta);
+}
+.amper-centro { font-size: 1.6rem; color: var(--eucalipto); font-family: var(--fuente-titulo); }
+
+/* ---------- Fecha y cuenta regresiva ---------- */
+.fecha-larga { font-size: 1.15rem; margin: 0 0 4px; text-transform: capitalize; }
+.hora { font-size: 1rem; margin: 0 0 18px; color: var(--tinta); }
+.cuenta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+.cuenta-item {
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 12px;
+  padding: 12px 16px;
+  min-width: 68px;
+}
+.cuenta-item span {
+  display: block;
+  font-family: var(--fuente-titulo);
+  font-size: 1.9rem;
+  color: var(--oliva);
+  line-height: 1;
+}
+.cuenta-item small { font-size: 0.75rem; color: var(--tinta); }
+.cuenta-fin { font-family: var(--fuente-titulo); font-size: 1.15rem; color: var(--oliva); }
+
+/* ---------- Lugares ---------- */
+.lugar { margin-bottom: 26px; }
+.lugar:last-child { margin-bottom: 0; }
+.lugar-tipo {
+  font-family: var(--fuente-datos);
+  font-weight: 600;
+  color: var(--eucalipto);
+  margin: 0 0 2px;
+}
+.lugar-nombre { font-family: var(--fuente-titulo); font-size: 1.3rem; color: var(--tinta); margin: 0 0 2px; }
+.lugar-direccion { margin: 0 0 14px; font-size: 0.95rem; }
+.mapa {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  margin-bottom: 14px;
+}
+
+/* ---------- Padrinos ---------- */
+.padrinos-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 520px) { .padrinos-grid { grid-template-columns: 1fr 1fr; } }
+.padrino-de { font-family: var(--fuente-titulo); font-style: italic; color: var(--oliva); margin: 0 0 4px; }
+.padrino-nombres { margin: 0; }
+
+/* ---------- Botones ---------- */
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.boton {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--tinta);
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid var(--eucalipto);
+  transition: background 0.2s ease;
+}
+.boton-principal { background: var(--oliva); color: var(--lino); border-color: var(--oliva); }
+.confirmar-texto { margin: 0 0 4px; }
+
+/* ---------- Cierre ---------- */
+.ramita-cierre { display: block; margin: 0 auto 8px; }
+.firma { font-family: var(--fuente-titulo); font-style: italic; font-size: 1.2rem; color: var(--tinta); }
+
+/* ---------- Separadores ---------- */
+.separador {
+  height: 40px;
+  background: no-repeat center / 90px 24px
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40"><path d="M10 20 H110" stroke="%239FAE8C" stroke-width="2"/><g fill="%239FAE8C"><ellipse cx="35" cy="14" rx="8" ry="4" transform="rotate(-25 35 14)"/><ellipse cx="55" cy="26" rx="8" ry="4" transform="rotate(25 55 26)"/><ellipse cx="75" cy="14" rx="8" ry="4" transform="rotate(-25 75 14)"/><ellipse cx="95" cy="26" rx="8" ry="4" transform="rotate(25 95 26)"/></g></svg>');
+}
+
+/* ---------- Musica ---------- */
+.musica-btn {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 50;
+  border: 1px solid var(--eucalipto);
+  background: var(--panel-bg);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: var(--tinta);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: var(--fuente-datos);
+  cursor: pointer;
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sobre-solapa, .sello, .sobre-pantalla { transition: opacity 0.4s ease; }
+  .sobre.abriendo .sobre-solapa { transform: none; }
+  .collage-col { transform: none !important; }
+}
