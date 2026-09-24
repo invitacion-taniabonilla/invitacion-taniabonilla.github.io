@@ -69,8 +69,18 @@ const CONFIG = {
   // --- Fotos ---
   // WebP generados por scripts/optimizar_fotos.py desde fotos/originales/.
   fotos: {
-    protagonistaNino: "./assets/img/protagonista-nino.webp",
-    protagonistaNina: "./assets/img/protagonista-nina.webp",
+    // Protagonistas con dos fotos cada uno: "antes" (bebe) y "ahora" (actual),
+    // que el visitante alterna con el switch Antes/Ahora.
+    protagonistas: {
+      nino: {
+        antes: "./assets/img/protagonista-nino-antes.webp",
+        ahora: "./assets/img/protagonista-nino-ahora.webp",
+      },
+      nina: {
+        antes: "./assets/img/protagonista-nina-antes.webp",
+        ahora: "./assets/img/protagonista-nina-ahora.webp",
+      },
+    },
     collage: [
       "./assets/img/collage-01.webp",
       "./assets/img/collage-02.webp",

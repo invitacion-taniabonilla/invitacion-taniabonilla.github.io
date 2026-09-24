@@ -18,6 +18,10 @@
   --radio: 18px;
   --sombra: 0 10px 30px rgba(58, 63, 46, 0.15);
   --gutter: 16px;
+
+  /* Iluminacion del marco de cada protagonista (en juego con la paleta) */
+  --glow-nino: rgba(90, 150, 205, 0.75);   /* azul cielo */
+  --glow-nina: rgba(224, 130, 162, 0.70);  /* rosa */
 }
 
 * { box-sizing: border-box; }
@@ -199,13 +203,78 @@ body {
 }
 .protagonista { margin: 0; }
 .marco-arco {
+  position: relative;
   border-radius: 50% 50% 8px 8px / 40% 40% 8px 8px;
   overflow: hidden;
-  box-shadow: var(--sombra);
   background: var(--lino);
   aspect-ratio: 3 / 4;
 }
-.marco-arco img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.marco-arco img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.7s ease;
+}
+/* Crossfade: por defecto se muestra "ahora" */
+.marco-arco .foto-antes { opacity: 0; }
+.marco-arco .foto-ahora { opacity: 1; }
+[data-tiempo="antes"] .marco-arco .foto-antes { opacity: 1; }
+[data-tiempo="antes"] .marco-arco .foto-ahora { opacity: 0; }
+
+/* Iluminacion del borde: azul para el nino, rosa para la nina */
+.marco-nino {
+  box-shadow: var(--sombra), 0 0 22px 3px var(--glow-nino),
+    inset 0 0 0 3px rgba(120, 175, 220, 0.55);
+}
+.marco-nina {
+  box-shadow: var(--sombra), 0 0 22px 3px var(--glow-nina),
+    inset 0 0 0 3px rgba(236, 165, 190, 0.55);
+}
+
+/* Switch Antes / Ahora (tipo iOS) */
+.toggle-tiempo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+.toggle-etiqueta {
+  font-family: var(--fuente-datos);
+  font-size: 0.95rem;
+  color: var(--tinta);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.toggle-etiqueta.activa { opacity: 1; color: var(--oliva); font-weight: 600; }
+.switch { border: none; background: none; padding: 0; cursor: pointer; }
+.switch-riel {
+  display: block;
+  width: 54px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--eucalipto);
+  position: relative;
+  transition: background 0.3s ease;
+}
+.switch-perilla {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+/* aria-checked="true" = Ahora: la perilla va a la derecha */
+.switch[aria-checked="true"] .switch-perilla { transform: translateX(24px); }
+.switch:focus-visible .switch-riel { outline: 3px solid var(--oliva); outline-offset: 3px; }
 .protagonista figcaption {
   font-family: var(--fuente-titulo);
   font-style: italic;
@@ -321,4 +390,5 @@ body {
   .sobre-solapa, .sello, .sobre-pantalla { transition: opacity 0.4s ease; }
   .sobre.abriendo .sobre-solapa { transform: none; }
   .collage-col { transform: none !important; }
+  .marco-arco img, .switch-perilla, .switch-riel { transition: none; }
 }

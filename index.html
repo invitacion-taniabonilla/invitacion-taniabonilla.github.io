@@ -73,14 +73,31 @@
     <section class="seccion protagonistas" aria-labelledby="protagonistasTitulo">
       <div class="panel">
         <h2 class="titulo-seccion" id="protagonistasTitulo">Los protagonistas</h2>
-        <div class="protagonistas-grid">
+
+        <!-- Switch Antes / Ahora (tipo iOS) -->
+        <div class="toggle-tiempo">
+          <span class="toggle-etiqueta" id="etqAntes">Antes</span>
+          <button class="switch" id="switchTiempo" type="button" role="switch"
+                  aria-checked="true" aria-label="Alternar entre fotos de antes y ahora">
+            <span class="switch-riel"><span class="switch-perilla"></span></span>
+          </button>
+          <span class="toggle-etiqueta activa" id="etqAhora">Ahora</span>
+        </div>
+
+        <div class="protagonistas-grid" id="protagonistasGrid" data-tiempo="ahora">
           <figure class="protagonista">
-            <div class="marco-arco"><img id="fotoNino" alt="" width="900" height="1200"></div>
+            <div class="marco-arco marco-nino">
+              <img class="foto-antes" id="fotoNinoAntes" alt="" width="900" height="1200" loading="lazy">
+              <img class="foto-ahora" id="fotoNinoAhora" alt="" width="900" height="1200" loading="lazy">
+            </div>
             <figcaption class="nombre-nino" data-nino></figcaption>
           </figure>
           <span class="amper amper-centro">&amp;</span>
           <figure class="protagonista">
-            <div class="marco-arco"><img id="fotoNina" alt="" width="900" height="1200"></div>
+            <div class="marco-arco marco-nina">
+              <img class="foto-antes" id="fotoNinaAntes" alt="" width="900" height="1200" loading="lazy">
+              <img class="foto-ahora" id="fotoNinaAhora" alt="" width="900" height="1200" loading="lazy">
+            </div>
             <figcaption class="nombre-nina" data-nina></figcaption>
           </figure>
         </div>

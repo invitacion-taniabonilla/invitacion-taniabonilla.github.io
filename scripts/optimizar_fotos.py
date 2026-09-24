@@ -9,9 +9,11 @@ Lee de  fotos/originales/  y escribe en  assets/img/  :
 Corrige la orientacion EXIF. Los nombres de salida van en minusculas, sin
 espacios ni tildes. Objetivo: peso total de imagenes por debajo de 3 MB.
 
-Reconoce los originales por el inicio del nombre de archivo:
-  NINO_...        -> protagonista del nino
-  NINA_...        -> protagonista de la nina
+Reconoce los originales por el nombre de archivo:
+  NINO_THEN...    -> protagonista del nino, foto de bebe (antes)
+  NINO_NOW...     -> protagonista del nino, foto actual (ahora)
+  NINA_THEN...    -> protagonista de la nina, foto de bebe (antes)
+  NINA_NOW...     -> protagonista de la nina, foto actual (ahora)
   NINIOS...       -> foto de inicio (los dos ninos)
   IMG_OPENGRAPH.. -> imagen Open Graph (vista previa de WhatsApp)
   FOTO_COLLAGE_.. -> collage (ordenadas por su numero)
@@ -78,12 +80,18 @@ def main():
 
     for ruta in archivos:
         nombre = ruta.name.upper()
-        if nombre.startswith("NINO"):
+        if nombre.startswith("NINO_THEN"):
             generados.append(guardar_webp(cargar(ruta), LADO_PROTAGONISTA,
-                                          DESTINO / "protagonista-nino.webp"))
-        elif nombre.startswith("NINA"):
+                                          DESTINO / "protagonista-nino-antes.webp"))
+        elif nombre.startswith("NINO_NOW"):
             generados.append(guardar_webp(cargar(ruta), LADO_PROTAGONISTA,
-                                          DESTINO / "protagonista-nina.webp"))
+                                          DESTINO / "protagonista-nino-ahora.webp"))
+        elif nombre.startswith("NINA_THEN"):
+            generados.append(guardar_webp(cargar(ruta), LADO_PROTAGONISTA,
+                                          DESTINO / "protagonista-nina-antes.webp"))
+        elif nombre.startswith("NINA_NOW"):
+            generados.append(guardar_webp(cargar(ruta), LADO_PROTAGONISTA,
+                                          DESTINO / "protagonista-nina-ahora.webp"))
         elif nombre.startswith("NINIOS"):
             generados.append(guardar_webp(cargar(ruta), LADO_INICIO,
                                           DESTINO / "inicio.webp"))

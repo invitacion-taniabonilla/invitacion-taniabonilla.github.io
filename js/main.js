@@ -46,10 +46,40 @@
 
   // ---------- Protagonistas ----------
   function construirProtagonistas() {
-    const nino = $("#fotoNino");
-    const nina = $("#fotoNina");
-    if (nino) { nino.src = CONFIG.fotos.protagonistaNino; nino.alt = "Foto de " + CONFIG.ninos.nino; }
-    if (nina) { nina.src = CONFIG.fotos.protagonistaNina; nina.alt = "Foto de " + CONFIG.ninos.nina; }
+    const p = CONFIG.fotos.protagonistas;
+    setImg("#fotoNinoAntes", p.nino.antes, CONFIG.ninos.nino + " de bebe");
+    setImg("#fotoNinoAhora", p.nino.ahora, CONFIG.ninos.nino);
+    setImg("#fotoNinaAntes", p.nina.antes, CONFIG.ninos.nina + " de bebe");
+    setImg("#fotoNinaAhora", p.nina.ahora, CONFIG.ninos.nina);
+    iniciarToggleTiempo();
+  }
+
+  function setImg(sel, src, alt) {
+    const el = $(sel);
+    if (el) { el.src = src; el.alt = "Foto de " + alt; }
+  }
+
+  // Switch Antes / Ahora: alterna las fotos con un crossfade (via CSS).
+  function iniciarToggleTiempo() {
+    const btn = $("#switchTiempo");
+    const grid = $("#protagonistasGrid");
+    const etqAntes = $("#etqAntes");
+    const etqAhora = $("#etqAhora");
+    if (!btn || !grid) return;
+
+    function aplicar(tiempo) {
+      grid.setAttribute("data-tiempo", tiempo);
+      const esAhora = tiempo === "ahora";
+      btn.setAttribute("aria-checked", String(esAhora));
+      if (etqAhora) etqAhora.classList.toggle("activa", esAhora);
+      if (etqAntes) etqAntes.classList.toggle("activa", !esAhora);
+    }
+
+    btn.addEventListener("click", function () {
+      aplicar(grid.getAttribute("data-tiempo") === "ahora" ? "antes" : "ahora");
+    });
+    if (etqAntes) etqAntes.addEventListener("click", function () { aplicar("antes"); });
+    if (etqAhora) etqAhora.addEventListener("click", function () { aplicar("ahora"); });
   }
 
   // ---------- Fecha y cuenta regresiva ----------
