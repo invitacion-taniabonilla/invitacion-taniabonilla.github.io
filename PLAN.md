@@ -1,9 +1,9 @@
 # Plan de trabajo
 
 ## Fase 0 - Datos
-- [ ] Completar `datos-evento.md` (Ethan)
-- [ ] Copiar fotos originales a `fotos/originales/` (Ethan)
-- [ ] Pasar los datos a `js/config.js`
+- [ ] Completar `datos-evento.md` (Ethan) -- faltan: recepcion, WhatsApp, firma, fecha limite
+- [x] Copiar fotos originales a `fotos/originales/` (Ethan)
+- [x] Pasar los datos a `js/config.js` (parcial: pendientes marcados con PENDIENTE)
 
 ## Fase 1 - Diseño
 - [x] Concepto aprobado: sobre + cielo de dos colores + botánico (ver CLAUDE.md, sección Diseño)
@@ -18,8 +18,8 @@
 > por el material real al completar Fase 0.
 
 ## Fase 3 - Fotos
-- [ ] `scripts/optimizar_fotos.py`: lee `fotos/originales/`, corrige orientación EXIF, exporta WebP a `assets/img/` (collage 800 px, protagonistas 1200 px) y genera `assets/img/og.jpg` 1200x630
-- [ ] Generar lista de fotos del collage en `config.js` (o JSON)
+- [x] `scripts/optimizar_fotos.py`: lee `fotos/originales/`, corrige orientación EXIF, exporta WebP a `assets/img/` (collage 800 px, protagonistas 1200 px) y genera `assets/img/og.jpg` 1200x630
+- [x] Generar lista de fotos del collage en `config.js` (o JSON)
 
 ## Fase 4 - Sobre inicial
 - [x] Sobre cerrado a pantalla completa con sello de iniciales
