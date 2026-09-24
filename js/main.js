@@ -32,6 +32,9 @@
     const sello = $("#selloIniciales");
     if (sello) sello.textContent = CONFIG.ninos.iniciales;
 
+    const cierre = $("#cierreTitulo");
+    if (cierre) cierre.textContent = CONFIG.textos.cierre;
+
     const firma = $("#firma");
     if (firma) firma.textContent = CONFIG.textos.firma;
 

@@ -50,7 +50,7 @@ const CONFIG = {
 
   // --- Confirmacion por WhatsApp ---
   whatsapp: {
-    numero: "593999999999", // PENDIENTE: 593 + numero sin 0 inicial
+    numero: "593996462715", // +593 99 646 2715
     mensaje: "Hola, confirmo mi asistencia al bautizo de Omar y Scarleth.",
     fechaLimite: "", // PENDIENTE: p. ej. "24 de octubre" (vacio oculta la nota)
   },
@@ -58,8 +58,9 @@ const CONFIG = {
   // --- Textos ---
   textos: {
     portada: "Bienvenidos a nuestro bautizo",
-    firma: "Con carino, los papas", // PENDIENTE: nombres de los papas
-    vestimenta: "",                  // opcional; vacio para ocultar
+    cierre: "Deseamos contar con su presencia, los esperamos",
+    firma: "Con cariño, Tania Bonilla",
+    vestimenta: "", // opcional; vacio para ocultar
   },
 
   // --- Musica (opcional) ---
