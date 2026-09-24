@@ -52,7 +52,7 @@ const CONFIG = {
   whatsapp: {
     numero: "593996462715", // +593 99 646 2715
     mensaje: "Hola, confirmo mi asistencia al bautizo de Omar y Scarleth.",
-    fechaLimite: "", // PENDIENTE: p. ej. "24 de octubre" (vacio oculta la nota)
+    fechaLimite: "15 de octubre de 2026", // vacio oculta la nota
   },
 
   // --- Textos ---
