@@ -58,6 +58,7 @@ const CONFIG = {
   // --- Textos ---
   textos: {
     portada: "Bienvenidos a nuestro bautizo",
+    presentacion: "Somos Omar y Scarleth, y queremos invitarte a ser parte del día más importante de nuestras vidas. Acompáñanos a recibir nuestro bautismo y celebra con nosotros esta fecha tan especial.",
     cierre: "Deseamos contar con su presencia, los esperamos",
     firma: "Con cariño, Tania Bonilla",
     vestimenta: "", // opcional; vacio para ocultar

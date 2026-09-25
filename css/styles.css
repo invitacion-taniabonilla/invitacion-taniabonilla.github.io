@@ -194,6 +194,16 @@ body {
 
 .paloma { display: block; margin: 0 auto 4px; }
 
+/* ---------- Presentacion ---------- */
+.presentacion-texto {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(1.05rem, 3.5vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--tinta);
+  max-width: 42ch;
+  margin: 0 auto;
+}
+
 /* ---------- Protagonistas ---------- */
 .protagonistas-grid {
   display: grid;

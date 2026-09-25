@@ -28,6 +28,7 @@
     setTexto("[data-nino]", CONFIG.ninos.nino);
     setTexto("[data-nina]", CONFIG.ninos.nina);
     setTexto('[data-texto="portada"]', CONFIG.textos.portada);
+    setTexto("#presentacionTexto", CONFIG.textos.presentacion);
 
     const sello = $("#selloIniciales");
     if (sello) sello.textContent = CONFIG.ninos.iniciales;

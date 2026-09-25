@@ -1,2 +1,21 @@
+# Se permite solo a los rastreadores de vista previa de enlaces (WhatsApp,
+# Facebook, Twitter, Telegram, etc.) para que la miniatura se genere,
+# y se bloquea al resto (buscadores) por privacidad.
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
 User-agent: *
 Disallow: /
